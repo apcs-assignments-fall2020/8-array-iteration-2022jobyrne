@@ -5,67 +5,79 @@ public class MyMain {
     // Reverses an array
     public static int[] reverse(int[] arr) {
     //int temp = arr[arr.length-1];
-        for (int i = 0; i < arr.length; i++) {
-        arr[i] = arr[i + (arr.length - (i * 2) -1)];
+        int[] arr2 = new int[arr.length];
+        int counter = 0;
+        for (int i = arr.length - 1; i >= 0; i--)
+        {
+        arr2[counter] = arr[i];
+        counter++;
+        }
+        return arr2;
     }
-    //arr[0] = temp;
-    //int[] arr11 = new int[5];
-    // return (Arrays.toString(arr));
-    //return arr[1];
-    //return 4;
-        return arr;
-    }
-   // } //figure out how to correctly print arrays
 
     // Finds the second largest number in an array
     public static int secondLargest(int[] arr) {
         int max = -200000;
-        int secondmax = -2000000;
+        int secondmax = -200000;
+        int[] arr2 = new int[arr.length];
     for (int i = 0; i < arr.length; i++) {
-      if (arr[i] > max) {
-        max = arr[i];
-      }
-    //   if (hello == "no") {
-    //   arr[3] = 0;
-    // }
-      }
-      for (int j = 0; j < arr.length; j++) {
-        if (arr[j] > secondmax) {
-        secondmax = arr[j];
-        } 
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
     }
-
-        return secondmax;
-
-        // return Arrays.toString(arr);
-    }
-
-    // Checks to see if an array contains a geometric series
-    public static boolean isGeometric(int[] arr) {
-        int j = 0;
-        for (int i = 0; i > arr.length - 2; i++) {
-            //int i = 0;
-            if (arr[i] / arr[i + 1] != arr[i + 1] / arr[i + 2]) {
-               boolean c = false;
-               break;
-            }
-            else {
-                boolean c =  true;
+        for (int j = 0; j < arr.length; j++)
+        {
+           if (arr[j] == max)
+           {
+               arr[j] = -2000000000;
+           }
+        }
+        arr2 = arr;
+        for (int k = 0; k < arr2.length; k++)
+        {
+            if (arr2[k] > secondmax)
+            {
+                secondmax = arr2[k];
             }
         }
-        return false;
+   return secondmax;
+    //return Arrays.toString(arr2);
+}
+
+    // Checks to see if an array contains a geometric series
+    public static Boolean isGeometric(int[] arr) {
+        boolean c = true;
+        int x = 0;
+        for (int i = 0; i < arr.length - 2; i++) {
+            double val = arr[i];
+            double val2 = arr[i+1];
+            double val3 = arr[i+2];
+            if (val/val2 == val2/val3)
+            {
+                    c = true;
+            }
+
+            else 
+            {
+                c =  false;
+                break;
+            }
+        }
+        return c;
     }
 
 
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);
         int[] arr6 = {2, 4, 6, 8, 1};
-        //int[] arr7 = {1, 2, 4, 8, 16};
-        System.out.println(reverse(arr6));
-        System.out.println("Is your highest value" + 8 + " ?");
-        String hello = scan.next();
+        int[] arr7 = {1, 2, 4, 8, 16};
+        System.out.println(secondLargest(arr7));
+        System.out.println(3 % 8);
+        //System.out.println("Is your highest value" + 8 + " ?");
+        //String hello = scan.next();
         // System.out.println(secondLargest(arr6, hello));
 
-        System.out.println(isGeometric(arr6));
+        //System.out.println(isGeometric(arr6));
     }
 }
